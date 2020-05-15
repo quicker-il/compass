@@ -32,8 +32,6 @@
   // buttons at the bottom of the screen
   var btnLockOrientation = document.getElementById('btn-lock-orientation');
   var btnNightmode = document.getElementById('btn-nightmode');
-  var btnMap = document.getElementById('btn-map');
-  var btnInfo = document.getElementById('btn-info');
 
   // if we have shown the heading unavailable warning yet
   var warningHeadingShown = false;
@@ -217,21 +215,13 @@
     if (isOrientationLockable) {
       btnLockOrientation.classList.remove('btn--hide');
 
-      btnNightmode.classList.add('column-25');
-      btnNightmode.classList.remove('column-33');
-      btnMap.classList.add('column-25');
-      btnMap.classList.remove('column-33');
-      btnInfo.classList.add('column-25');
-      btnInfo.classList.remove('column-33');
+      btnNightmode.classList.add('column-50');
+      btnNightmode.classList.remove('column-100');
     } else {
       btnLockOrientation.classList.add('btn--hide');
 
-      btnNightmode.classList.add('column-33');
-      btnNightmode.classList.remove('column-25');
-      btnMap.classList.add('column-33');
-      btnMap.classList.remove('column-25');
-      btnInfo.classList.add('column-33');
-      btnInfo.classList.remove('column-25');
+      btnNightmode.classList.add('column-100');
+      btnNightmode.classList.remove('column-50');
     }
   }
 
@@ -318,10 +308,6 @@
     setNightmode(!isNightMode);
   }
 
-  function openMap () {
-    window.open('https://www.google.com/maps/place/@' + positionCurrent.lat + ',' + positionCurrent.lng + ',16z', '_blank');
-  }
-
   function popupOpenFromClick (event) {
     popupOpen(event.currentTarget.dataset.name);
   }
@@ -383,7 +369,6 @@
 
   btnLockOrientation.addEventListener('click', toggleOrientationLock);
   btnNightmode.addEventListener('click', toggleNightmode);
-  btnMap.addEventListener('click', openMap);
 
   var i;
   for (i = 0; i < btnsPopup.length; i++) {
